@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/elearning
+    username: postgres
+    password: admin
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  flyway:
+    url: jdbc:postgresql://localhost:5432/elearning
+    user: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
