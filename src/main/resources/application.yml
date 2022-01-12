@@ -15,3 +15,10 @@ spring:
     user: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
+springdoc:
+  api-docs:
+    enabled: true
+    path: /openapi/v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+  packages-to-scan:  - nmcnpm.project.elearning
