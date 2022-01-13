@@ -1,41 +1,44 @@
-package nmcnpm.project.elearning.roles.model;
+package nmcnpm.project.elearning.courses.model;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import nmcnpm.project.elearning.users.model.User;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "videos")
+public class Video {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "role_id")
+	@Column(name = "video_id")
 	private int id;
 	
-	@Column(name = "role_name", unique = true)
+	@Column(name = "video_name")
 	private String name;
 	
-	@Column(name = "role_description")
+	@Column(name = "video_description")
 	private String description;
 	
-	@OneToMany(mappedBy = "role")
-	private Set<User> users = new LinkedHashSet<User>();
+	@Column(name = "video_url")
+	private String url;
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name = "course_id", nullable = false)
+	private Course course;
 }

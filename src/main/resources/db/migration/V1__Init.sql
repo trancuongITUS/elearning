@@ -58,8 +58,7 @@ CREATE TABLE comments (
 );
 
 CREATE TABLE students_courses (
-	id SERIAL,
 	student_id int,
 	course_id int,
-	PRIMARY KEY (id)
+	PRIMARY KEY (student_id, course_id)
 );
