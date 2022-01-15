@@ -22,5 +22,20 @@ public class ExerciseControllerImpl implements ExerciseController {
 		List<Exercise> exercises = service.findAll();
 		return new ResponseEntity<>(exercises, HttpStatus.OK);
 	}
+
+	@Override
+	public ResponseEntity<Exercise> creatExercise(Exercise exercise) {
+		return new ResponseEntity<>(service.createExercise(exercise), HttpStatus.CREATED);
+	}
+
+	@Override
+	public ResponseEntity<Exercise> updateExercise(Integer id) {
+		return new ResponseEntity<>(service.updateExercise(id), HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<Exercise> deleteExercise(Integer id) {
+		return new ResponseEntity<>(service.deleteExercise(id), HttpStatus.OK);
+	}
 	
 }

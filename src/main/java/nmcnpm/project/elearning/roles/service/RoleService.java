@@ -7,4 +7,5 @@ import nmcnpm.project.elearning.roles.model.Role;
 public interface RoleService {
 	List<Role> findAll();
 	List<Role> findByName(String name);
+	Role create(Role role);
 }

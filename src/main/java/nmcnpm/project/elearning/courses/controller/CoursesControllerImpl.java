@@ -29,4 +29,19 @@ public class CoursesControllerImpl implements CoursesController {
 		return new ResponseEntity<>(courses, HttpStatus.OK);
 	}
 
+	@Override
+	public ResponseEntity<Course> creatCourse(Course course) {
+		return new ResponseEntity<>(service.createCourse(course), HttpStatus.CREATED);
+	}
+
+	@Override
+	public ResponseEntity<Course> updateCourse(Integer id) {
+		return new ResponseEntity<>(service.updateCourse(id), HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<Course> deleteCourse(Integer id) {
+		return new ResponseEntity<>(service.deleteCourse(id), HttpStatus.OK);
+	}
+
 }

@@ -23,4 +23,24 @@ public class CommentControllerImpl implements CommentController {
 		return new ResponseEntity<>(comments, HttpStatus.OK);
 	}
 
+	@Override
+	public ResponseEntity<Comment> creatComment(Comment comment) {
+		Comment newComment = service.createComment(comment);
+		
+		return new ResponseEntity<>(newComment, HttpStatus.CREATED);
+	}
+
+	@Override
+	public ResponseEntity<Comment> updateComment(Integer id, Comment comment) {
+		Comment newComment = service.updateComment(id, comment);
+		
+		return new ResponseEntity<>(newComment, HttpStatus.OK);
+	}
+
+	@Override
+	public ResponseEntity<Comment> deleteComment(Integer id) {
+		
+		return new ResponseEntity<>(service.deleteComment(id), HttpStatus.OK);
+	}
+
 }

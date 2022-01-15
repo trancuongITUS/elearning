@@ -19,6 +19,22 @@ public class CommentServiceImpl implements CommentService {
 	public List<Comment> findAll() {
 		return repository.findAll();
 	}
+
+	@Override
+	public Comment createComment(Comment comment) {
+		return repository.save(comment);
+	}
+
+	@Override
+	public Comment updateComment(Integer id, Comment comment) {
+		return repository.save(comment);
+	}
+
+	@Override
+	public Comment deleteComment(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

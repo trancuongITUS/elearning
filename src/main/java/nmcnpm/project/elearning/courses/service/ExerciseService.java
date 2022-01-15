@@ -6,4 +6,7 @@ import nmcnpm.project.elearning.courses.model.Exercise;
 
 public interface ExerciseService {
 	public List<Exercise> findAll();
+	public Exercise createExercise(Exercise exercise);
+	public Exercise updateExercise(Integer id);
+	public Exercise deleteExercise(Integer id);
 }

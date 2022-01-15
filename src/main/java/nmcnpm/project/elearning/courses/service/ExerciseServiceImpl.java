@@ -19,4 +19,22 @@ private ExerciseRepository repository;
 	public List<Exercise> findAll() {
 		return repository.findAll();
 	}
+
+	@Override
+	public Exercise createExercise(Exercise exercise) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Exercise updateExercise(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Exercise deleteExercise(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
