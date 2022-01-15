@@ -78,5 +78,5 @@ public class Course {
 	
 	@OneToMany(mappedBy = "course")
 	@JsonManagedReference
-	private Set<Video> comments = new LinkedHashSet<Video>();
+	private Set<Comment> comments = new LinkedHashSet<Comment>();
 }
