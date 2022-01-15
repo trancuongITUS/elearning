@@ -15,6 +15,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -59,14 +63,19 @@ public class User {
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "role_id", nullable = false)
+	//@JsonBackReference
+	@JsonManagedReference
 	private Role role;
 	
 	@OneToMany(mappedBy = "createdBy")
+	@JsonBackReference
 	private Set<Course> coursesInstructor = new LinkedHashSet<Course>();
 	
 	@ManyToMany(mappedBy = "students")
+	@JsonIgnore
 	private Set<Course> coursesStudent = new LinkedHashSet<Course>();
 	
 	@OneToMany(mappedBy = "createdBy")
+	@JsonBackReference
 	private Set<Comment> comments = new LinkedHashSet<Comment>();
 }

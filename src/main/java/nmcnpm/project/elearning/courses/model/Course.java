@@ -20,6 +20,10 @@ import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,6 +54,7 @@ public class Course {
 	
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "created_by", nullable = false)
+	@JsonBackReference
 	private User createdBy;
 	
 	@CreatedDate
@@ -60,14 +65,18 @@ public class Course {
 	@JoinTable(name = "students_courses",
 			joinColumns = @JoinColumn(name = "course_id"),
 			inverseJoinColumns = @JoinColumn(name = "student_id"))
+	@JsonIgnore
 	private Set<User> students = new LinkedHashSet<User>();
 	
 	@OneToMany(mappedBy = "course")
+	@JsonManagedReference
 	private Set<Exercise> exercises = new LinkedHashSet<Exercise>();
 	
 	@OneToMany(mappedBy = "course")
+	@JsonManagedReference
 	private Set<Video> videos = new LinkedHashSet<Video>();
 	
 	@OneToMany(mappedBy = "course")
+	@JsonManagedReference
 	private Set<Video> comments = new LinkedHashSet<Video>();
 }
